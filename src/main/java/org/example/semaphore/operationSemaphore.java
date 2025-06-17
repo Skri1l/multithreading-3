@@ -1,8 +1,12 @@
 package org.example.semaphore;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.concurrent.Semaphore;
 
 public class operationSemaphore {
+    private static final Logger logger = LogManager.getLogger(operationSemaphore.class);
     private final Semaphore semaphore;
 
     public operationSemaphore(int permits) {
@@ -10,13 +14,21 @@ public class operationSemaphore {
     }
 
     public void acquire(String name) throws InterruptedException {
-        System.out.println(name + " пытается получить доступ к ресурсу...");
+        logger.info("{} trying to access a resource", name);
         semaphore.acquire();
-        System.out.println(name + " получил доступ к ресурсу.");
+        logger.info("{} got access to a resource.", name);
     }
 
     public void release(String name) {
         semaphore.release();
-        System.out.println(name + " освободил ресурс.");
+        logger.info("{} released a resource", name);
+    }
+
+    public int availablePermits() {
+        return semaphore.availablePermits();
+    }
+
+    public Semaphore getSemaphore() {
+        return semaphore;
     }
 }

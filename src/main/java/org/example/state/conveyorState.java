@@ -1,6 +1,6 @@
 package org.example.state;
 
-public interface conveyorState {
-    void handle();
+public abstract class conveyorState {
+    public abstract void inProcess();
 }
 

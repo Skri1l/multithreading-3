@@ -1,9 +1,13 @@
 package org.example.state;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class readyState implements conveyorState {
+public class readyState extends conveyorState {
+
+    private static final Logger logger = LogManager.getLogger(readyState.class);
     @Override
-    public void handle() {
-        System.out.println("Конвейер в состоянии готовности.");
+    public void inProcess() {
+        logger.info("Conveyor is READY");
     }
 }

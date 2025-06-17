@@ -25,7 +25,7 @@ public class Main {
         List<Future<Void>> futures = new ArrayList<>();
 
         for (int i = 1; i <= conveyorCount; i++) {
-            conveyor conveyor = new conveyor("Конвейер-" + i, barrier, semaphore);
+            conveyor conveyor = new conveyor("Conveyor-" + i, barrier, semaphore);
             futures.add(executor.submit(conveyor));
         }
 
